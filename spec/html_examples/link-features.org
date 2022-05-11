@@ -44,5 +44,8 @@ sections within documents, etc.
   URLs can be abbreviated by a LINK definition in the org file
 
 #+LINK: example http://example.com/something
+#+LINK: duckduckgo https://duckduckgo.com/?q=%s
 
-[[example][This is an abbreviated link example]]
+- [[example][This is an abbreviated link example]]
+- [[example:tag][This is an abbreviated link example with tag]]
+- [[duckduckgo:OrgMode]]

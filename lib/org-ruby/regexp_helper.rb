@@ -60,6 +60,8 @@ module Orgmode
       @org_subp_regexp = /([_^])\{(.*?)\}/
       @org_footnote_regexp = /\[fn:(.+?)(:(.*))?\]/
       @org_footnote_def_regexp = /^\[fn:(.+?)(:(.*))?\]( (.+))?/
+
+      @linkword_regexp = /([a-z][\w-]+)(:(.*))?/
     end
 
     # Finds all emphasis matches in a string.
@@ -165,6 +167,12 @@ module Orgmode
       end
 
       str # for testing
+    end
+
+    def linkword str
+      str.gsub @linkword_regexp do |match|
+        yield $1, $3
+      end
     end
 
     def restore_code_snippets str

@@ -323,7 +323,18 @@ module Orgmode
         end
 
         if defi
-          link = @options[:link_abbrevs][link] if @options[:link_abbrevs].has_key? link
+          @re_help.linkword link do |linkword, tag|
+            if @options[:link_abbrevs].has_key? linkword
+              link = @options[:link_abbrevs][linkword]
+              if tag
+                if link.include? "%s"
+                  link = link.sub("%s", tag)
+                else
+                  link = link + tag
+                end
+              end
+            end
+          end
           quote_tags("<a href=\"#{link}\">") + defi + quote_tags("</a>")
         else
           quote_tags "<img src=\"#{link}\" alt=\"#{link}\" />"
