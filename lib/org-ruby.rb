@@ -20,6 +20,9 @@ require 'org-ruby/markdown_output_buffer'
 # Tilt support
 require 'org-ruby/tilt'
 
+# attachment links support
+require 'org-ruby/attachment_links_converter'
+
 module OrgRuby
 
   # :stopdoc:
