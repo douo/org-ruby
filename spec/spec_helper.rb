@@ -3,6 +3,7 @@ require 'org-ruby'
 RememberFile = File.join(File.dirname(__FILE__), %w[data remember.org])
 FreeformFile = File.join(File.dirname(__FILE__), %w[data freeform.org])
 FreeformExampleFile = File.join(File.dirname(__FILE__), %w[data freeform-example.org])
+InheritedPropertiesFile = File.join(File.dirname(__FILE__), %w[data inherited-properties.org])
 
 RSpec.configure do |config|
   # == Mock Framework

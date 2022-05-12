@@ -26,6 +26,9 @@ module Orgmode
       # headlines.
       @headline_number_stack = []
 
+      # Keep headline property for attachment link
+      @headline_property_stack = []
+
       @output = output
       @output_type = :start
       @list_indent_stack = []
@@ -84,6 +87,7 @@ module Orgmode
         # If the line is contained within a code block but we should
         # not preserve whitespaces, then we do nothing.
       when (line.kind_of? Headline)
+        add_next_headline_property line
         add_line_attributes line
         @buffer << "\n" << line.output_text.strip
       when ([:definition_term, :list_item, :table_row, :table_header,
@@ -108,6 +112,22 @@ module Orgmode
       end
 
       @output_type = line.assigned_paragraph_type || line.paragraph_type
+    end
+
+
+    def add_next_headline_property(headline)
+      until @headline_property_stack.empty? or @headline_property_stack.last[0] < headline.level do
+        @headline_property_stack.pop
+      end
+      @headline_property_stack.push [headline.level, headline.property_drawer]
+    end
+
+    # Gets headine property hereditarily.
+    def get_current_headline_property(key)
+      @headline_property_stack.reverse_each do |props|
+        return props[key] if props and props.has_key? key
+      end
+      return nil
     end
 
     # Gets the next headline number for a given level. The intent is
