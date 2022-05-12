@@ -122,6 +122,10 @@ module Orgmode
         end
       end
 
+      if @parser_options[:attachment_prefix].nil?
+        @parser_options[:attachment_prefix] = "data/:ID/"
+      end
+
       @parser_options[:offset] ||= 0
 
       parse_lines @lines
@@ -196,6 +200,7 @@ module Orgmode
         if mode == :normal
           @headlines << @current_headline = line if Headline.headline? line.to_s
           # If there is a setting on this line, remember it.
+          # 这里不可能为
           line.in_buffer_setting? do |key, value|
             store_in_buffer_setting key.upcase, value
           end
@@ -346,7 +351,9 @@ module Orgmode
         :export_footnotes      => export_footnotes?,
         :link_abbrevs          => @link_abbrevs,
         :skip_syntax_highlight => @parser_options[:skip_syntax_highlight],
-        :markup_file           => @parser_options[:markup_file]
+        :markup_file           => @parser_options[:markup_file],
+        :attachment_prefix     => @parser_options[:attachment_prefix]
+
       }
       export_options[:skip_tables] = true if not export_tables?
       output = ""
@@ -377,8 +384,8 @@ module Orgmode
       output << "\n"
 
       return output if @parser_options[:skip_rubypants_pass]
-        
-      rp = RubyPants.new(output) 
+
+      rp = RubyPants.new(output)
       rp.to_html
     end
 

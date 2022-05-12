@@ -49,3 +49,10 @@ sections within documents, etc.
 - [[example][This is an abbreviated link example]]
 - [[example:tag][This is an abbreviated link example with tag]]
 - [[duckduckgo:OrgMode]]
+
+* Attachment links
+  :PROPERTIES:
+  :ID:       95d50008-c12e-479f-a4f2-cc0238205319
+  :END:
+
+See attached document for more information: [[attachment:info.org]]

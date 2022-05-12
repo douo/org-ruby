@@ -323,8 +323,13 @@ module Orgmode
         end
 
         if defi
-          @re_help.linkword link do |linkword, tag|
-            if @options[:link_abbrevs].has_key? linkword
+          @re_help.rewrite_linkword link do |linkword, tag|
+            if @re_help.attachment_keyword == linkword
+              link = @re_help.rewrite_attachment_link(@options[:attachment_prefix]) do |match|
+                get_current_headline_property(match)
+              end
+              link = link + tag if tag
+            elsif @options[:link_abbrevs].has_key? linkword
               link = @options[:link_abbrevs][linkword]
               if tag
                 if link.include? "%s"
