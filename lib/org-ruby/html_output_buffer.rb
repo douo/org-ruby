@@ -38,6 +38,9 @@ module Orgmode
       @logger.debug "HTML export options: #{@options.inspect}"
       @custom_blocktags = {} if @options[:markup_file]
 
+      @attachment_links_converter =
+        AttachmentLinksConverter.new(@options[:attachment_links_behavior])
+
       unless @options[:skip_syntax_highlight]
         begin
           require 'pygments'
@@ -322,11 +325,11 @@ module Orgmode
         end
 
         @re_help.rewrite_linkword link do |linkword, tag|
-          if @re_help.attachment_keyword == linkword
-            link = @re_help.rewrite_attachment_link(@options[:attachment_prefix]) do |match|
-              get_current_headline_property(match)
-            end
-            link = link + tag if tag
+          if @attachment_links_converter.attachment_link? linkword
+            link = @attachment_links_converter.convert(tag,
+                                                       @options[:attachment_prefix],
+                                                       -> k {get_current_headline_property k}
+                                                      )
           elsif @options[:link_abbrevs].has_key? linkword
             link = @options[:link_abbrevs][linkword]
             if tag

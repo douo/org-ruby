@@ -123,7 +123,11 @@ module Orgmode
       end
 
       if @parser_options[:attachment_prefix].nil?
-        @parser_options[:attachment_prefix] = "data/:ID/"
+        @parser_options[:attachment_prefix] = "data/"
+      end
+
+      if @parser_options[:attachment_links_behavior].nil?
+        @parser_options[:attachment_links_behavior] = "auto"
       end
 
       @parser_options[:offset] ||= 0

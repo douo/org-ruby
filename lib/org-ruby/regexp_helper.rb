@@ -42,8 +42,6 @@ module Orgmode
 
     attr_reader :org_image_file_regexp
 
-    attr_reader :attachment_keyword
-
     def initialize
       # Set up the emphasis regular expression.
       @pre_emphasis = ' \t\(\'"\{'
@@ -64,8 +62,7 @@ module Orgmode
       @org_footnote_def_regexp = /^\[fn:(.+?)(:(.*))?\]( (.+))?/
 
       @linkword_regexp = /([a-z][\w-]+)(:(.*))?/
-      @attachment_keyword = "attachment"
-      @attachment_placeholder_regexp = /:(\w+)|:\{(\w+)\}/  # FIXME more
+
     end
 
     # Finds all emphasis matches in a string.
@@ -171,13 +168,6 @@ module Orgmode
       end
 
       str # for testing
-    end
-
-    def rewrite_attachment_link str
-      str.gsub @attachment_placeholder_regexp do |match|
-        # match :key || :{key}
-        yield $1 || $2
-      end
     end
 
     def rewrite_linkword str
