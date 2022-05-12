@@ -10,7 +10,7 @@
 *** Header 1-1-1
 :PROPERTIES:
 :ID:       111
-:SLG:      H111
+:SLUG:      H111
 :END:
 ** Header 1-2
 * Header 2

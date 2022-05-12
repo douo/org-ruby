@@ -124,7 +124,7 @@ module Orgmode
 
     # Gets headine property hereditarily.
     def get_current_headline_property(key)
-      @headline_property_stack.reverse_each do |props|
+      @headline_property_stack.reverse_each do |_, props|
         return props[key] if props and props.has_key? key
       end
       return nil

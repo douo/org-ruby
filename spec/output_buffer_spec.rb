@@ -18,10 +18,7 @@ describe Orgmode::OutputBuffer do
 
   it "property drawer inheritance" do
     parser = Orgmode::Parser.load(InheritedPropertiesFile)
-    parser.headlines.each do |h|
-      puts h.body_lines
-      puts
-    end
+
     def translate(lines, output_buffer)
       output_buffer.output_type = :start
       lines.each { |line| output_buffer.insert(line) }
