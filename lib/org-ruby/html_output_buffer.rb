@@ -317,29 +317,29 @@ module Orgmode
         # We don't add a description for images in links, because its
         # empty value forces the image to be inlined.
         defi ||= link unless link =~ @re_help.org_image_file_regexp
-
         if defi =~ @re_help.org_image_file_regexp
           defi = quote_tags "<img src=\"#{defi}\" alt=\"#{defi}\" />"
         end
 
-        if defi
-          @re_help.rewrite_linkword link do |linkword, tag|
-            if @re_help.attachment_keyword == linkword
-              link = @re_help.rewrite_attachment_link(@options[:attachment_prefix]) do |match|
-                get_current_headline_property(match)
-              end
-              link = link + tag if tag
-            elsif @options[:link_abbrevs].has_key? linkword
-              link = @options[:link_abbrevs][linkword]
-              if tag
-                if link.include? "%s"
-                  link = link.sub("%s", tag)
-                else
-                  link = link + tag
-                end
+        @re_help.rewrite_linkword link do |linkword, tag|
+          if @re_help.attachment_keyword == linkword
+            link = @re_help.rewrite_attachment_link(@options[:attachment_prefix]) do |match|
+              get_current_headline_property(match)
+            end
+            link = link + tag if tag
+          elsif @options[:link_abbrevs].has_key? linkword
+            link = @options[:link_abbrevs][linkword]
+            if tag
+              if link.include? "%s"
+                link = link.sub("%s", tag)
+              else
+                link = link + tag
               end
             end
           end
+        end
+
+        if defi
           quote_tags("<a href=\"#{link}\">") + defi + quote_tags("</a>")
         else
           quote_tags "<img src=\"#{link}\" alt=\"#{link}\" />"
