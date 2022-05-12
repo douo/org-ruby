@@ -69,6 +69,29 @@ Brief list of features supported:
 - Supports =.org= views in Rails through Tilt.
 - Code syntax highlight of code blocks using Pygments.rb or Coderay when available
 
+
+** Attachment Links(HTML only)
+
+Example:
+
+#+begin_example
+,* Attachment links
+  :PROPERTIES:
+  :ID:       95d50008-c12e-479f-a4f2-cc0238205319
+  :END:
+
+[[attachment:info.org]]
+#+end_example
+
+Result:
+
+#+begin_src html
+<a href="data/95d50008-c12e-479f-a4f2-cc0238205319/info.org">attachment:info.org</a></p>
+#+end_src
+
+The attachment link controled by ~@parser_options[:attachment_prefix]~. Default is ~data/:ID/~
+
+
 ** Custom Markup
 
 Org-ruby supports custom markups for HTML and Markdown. The custom
