@@ -100,7 +100,7 @@ module Orgmode
       @parser_options = parser_options
 
       #
-      # Include file feature disabled by default since 
+      # Include file feature disabled by default since
       # it would be dangerous in some environments
       #
       # http://orgmode.org/manual/Include-files.html
@@ -356,8 +356,8 @@ module Orgmode
         :link_abbrevs          => @link_abbrevs,
         :skip_syntax_highlight => @parser_options[:skip_syntax_highlight],
         :markup_file           => @parser_options[:markup_file],
-        :attachment_prefix     => @parser_options[:attachment_prefix]
-
+        :attachment_prefix     => @parser_options[:attachment_prefix],
+        :generate_heading_id   => @parser_options[:generate_heading_id]
       }
       export_options[:skip_tables] = true if not export_tables?
       output = ""
