@@ -203,7 +203,7 @@ module Orgmode
         level = headline.level
         @output.delete_suffix!('>')
         @heading_id.slice!(level, @heading_id.length - level)
-        @heading_id[level-1]=headline.output_text.downcase.gsub(/\W/, "-")
+        @heading_id[level-1]=headline.output_text.downcase.gsub(/(?u)\W/, "-")
         @output << " id=\"" + @heading_id.join("--") + "\">"
       end
       if @options[:export_heading_number] then
