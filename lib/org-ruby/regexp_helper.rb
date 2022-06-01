@@ -44,9 +44,9 @@ module Orgmode
 
     def initialize
       # Set up the emphasis regular expression.
-      @pre_emphasis = ' \t\(\'"\{'
-      @post_emphasis = '- \t\.,:!\?;\'"\)\}\\\\'
-      @border_forbidden = ' \t\r\n'
+      @pre_emphasis = '-[[:space:]]\p{Cf}\(\'"\{'
+      @post_emphasis = '-[[:space:]]\p{Cf}\.,:!\?;\'"\)\}\\\\'
+      @border_forbidden = '[[:space:]]\p{Cf}'
       @body_regexp = '.*?'
       @max_newlines = 1
       @body_regexp = "#{@body_regexp}" +

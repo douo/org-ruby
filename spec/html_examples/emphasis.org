@@ -31,6 +31,10 @@ http://www.gmail.com
 
 *bold* /italic/ =code= ~verbatim~ _underline_  +strikethrough+ [[http://www.bing.com]] [[http://www.google.com]] http://www.gmail.com [[http://www.xkcd.com][helpful text link]] [[http://farm7.static.flickr.com/6078/6084185195_552aa270b2.jpg]] [[http://www.xkcd.com][http://imgs.xkcd.com/comics/t_cells.png]] <http://www.google.com>
 
+** Zere Width Space
+
+*bold*​​/italic/​=code=​~verbatim~​_underline_​+strikethrough+​[[http://www.bing.com]][[​http://www.google.com]]
+
 ** Within code test
 
 #+begin_example
