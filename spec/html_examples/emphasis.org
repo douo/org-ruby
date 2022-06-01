@@ -35,6 +35,22 @@ http://www.gmail.com
 
 *bold*​​/italic/​=code=​~verbatim~​_underline_​+strikethrough+​[[http://www.bing.com]][[​http://www.google.com]]
 
+** non-ASCII Characters
+
+/斜体/
+
+*粗体*
+
+_下划线_
+
++删除+
+
+~代码（code）~
+
+=カタカナ=
+
+Org 里中文/斜体/、*粗体*、_下划线_、+删除+、~代码（code）~と=常量=。
+
 ** Within code test
 
 #+begin_example
