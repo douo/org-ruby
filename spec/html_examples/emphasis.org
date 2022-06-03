@@ -35,6 +35,11 @@ http://www.gmail.com
 
 *bold*​​/italic/​=code=​~verbatim~​_underline_​+strikethrough+​[[http://www.bing.com]][[​http://www.google.com]]
 
+** Footnote
+
+*bold*[fn:1]
+
+
 ** non-ASCII Characters
 
 /斜体/

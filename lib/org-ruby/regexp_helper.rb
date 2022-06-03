@@ -46,7 +46,7 @@ module Orgmode
       # Set up the emphasis regular expression.
       cjk_hack = '\p{Han}\p{Hiragana}\p{Katakana}[\p{Po}&&[^[:ascii:]]]'
       @pre_emphasis = '-[[:space:]]\p{Cf}\(\'"\{' + cjk_hack
-      @post_emphasis = '-[[:space:]]\p{Cf}\.,:!\?;\'"\)\}\\\\' + cjk_hack
+      @post_emphasis = '-[[:space:]]\p{Cf}\.,:!\?;\'"\)\}\\[' + cjk_hack
       @border_forbidden = '[[:space:]]'
       @body_regexp = '.*?'
       @max_newlines = 1
