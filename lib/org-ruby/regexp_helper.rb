@@ -59,8 +59,8 @@ module Orgmode
       build_org_emphasis_regexp
       build_org_link_regexp
       @org_subp_regexp = /([_^])\{(.*?)\}/
-      @org_footnote_regexp = /\[fn:(.+?)(:(.*))?\]/
-      @org_footnote_def_regexp = /^\[fn:(.+?)(:(.*))?\]( (.+))?/
+      @org_footnote_regexp = /\[fn:(.+?)(:(.*?))?\]/
+      @org_footnote_def_regexp = /^\[fn:(.+?)(:(.*?))?\]( (.+))?/
 
       @linkword_regexp = /([a-z][\w-]+)(:(.*))?/
 
