@@ -225,10 +225,9 @@ module Orgmode
 
       @output << "\n<div id=\"footnotes\">\n<h2 class=\"footnotes\">Footnotes:</h2>\n<div id=\"text-footnotes\">\n"
       while (name, (defi, content) = @footnotes.shift) do
-        @output << "<div class=\"footdef\"><sup><a id=\"fn.#{name}\" href=\"#fnr.#{name}\">#{name}</a></sup>" \
-                << "<p class=\"footpara\">" \
-                << inline_formatting(defi) \
-                << "</p></div>\n"
+        @output << "<p><a id=\"fn.#{name}\" class=\"footnum\" href=\"#fnr.#{name}\"><sup>#{name}</sup></a>" \
+        << inline_formatting(defi) \
+        << "</p>\n"
       end
 
       @output << "</div>\n</div>"
