@@ -224,11 +224,10 @@ module Orgmode
       return false unless @options[:export_footnotes] and not @footnotes.empty?
 
       @output << "\n<div id=\"footnotes\">\n<h2 class=\"footnotes\">Footnotes:</h2>\n<div id=\"text-footnotes\">\n"
-      @footnotes.each do |name, (defi, content)|
-        @buffer = defi
+      while (name, (defi, content) = @footnotes.shift) do
         @output << "<div class=\"footdef\"><sup><a id=\"fn.#{name}\" href=\"#fnr.#{name}\">#{name}</a></sup>" \
                 << "<p class=\"footpara\">" \
-                << inline_formatting(@buffer) \
+                << inline_formatting(defi) \
                 << "</p></div>\n"
       end
 
